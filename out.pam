@@ -1,0 +1,489 @@
+#!/usr/local/bin/pam
+entry 2
+types 17
+0 bool b  0 1 2 4 0
+1 char c  0 255 256 4 0
+2 int i  -2147483646 2147483647 0 4 0
+3 float r  0 0 0 4 0
+4 $nil p  0 0 0 8 0
+5 file f  0 0 0 4 0
+6 strength h  0 255 0 4 0
+7 opacity l  0 1 0 4 0
+8 color e  0 6 7 4 0
+Black
+Red
+Green
+Blue
+Yellow
+Orange
+White
+9 button u  0 255 0 4 0
+10 sound e  0 19 20 4 0
+Woosh
+Beep
+Sheep
+Phaser
+Rocket
+CNote
+CsharpNote
+DNote
+DsharpNote
+ENote
+FNote
+FsharpNote
+GNote
+GsharpNote
+ANote
+AsharpNote
+BNote
+Bomb
+Fail
+Tada
+11 $range1 i  0 2 3 4 0
+12 TipoFilas a  0 2 3 12 1
+13 $range2 i  0 2 3 4 0
+14 TipoTablero a  0 2 3 36 12
+15 $tstr10 s  0 9 10 40 1
+16 $tstr1 s  0 0 1 4 1
+vars 31
+Maxint 2 0x0 2147483647 '3.p' 1
+Minint 2 0x4 -2147483646 '3.p' 1
+Maxchar 1 0x8 255 '3.p' 1
+Minchar 1 0xc 0 '3.p' 1
+Minstrength 6 0x10 0 '3.p' 1
+Maxstrength 6 0x14 255 '3.p' 1
+Transp 7 0x18 0.000000e+00 '3.p' 1
+Tlucid 7 0x1c 5.000000e-01 '3.p' 1
+Opaque 7 0x20 1.000000e+00 '3.p' 1
+NoBut 9 0x24 0 '3.p' 1
+Eof 1 0x28 255 '3.p' 47
+Up 1 0x2c 245 '3.p' 1
+MetaLeft 1 0x30 247 '3.p' 1
+Left 1 0x34 243 '3.p' 1
+Right 1 0x38 242 '3.p' 1
+Shift 1 0x3c 241 '3.p' 1
+Del 1 0x40 249 '3.p' 1
+Eol 1 0x44 10 '3.p' 45
+MetaRight 1 0x48 248 '3.p' 1
+Tab 1 0x4c 9 '3.p' 1
+Esc 1 0x50 27 '3.p' 1
+Nul 1 0x54 0 '3.p' 1
+Down 1 0x58 244 '3.p' 1
+Ctrl 1 0x5c 240 '3.p' 1
+Return 1 0x60 246 '3.p' 1
+MaxTab 2 0x64 3 '3.p' 87
+$s0 15 0x68 'fichas.txt' '3.p' 40
+$s1 16 0x90 'r' '3.p' 40
+stdin 5 0x94 - '3.p' 1
+stdout 5 0x98 - '3.p' 1
+stdgraph 5 0x9c - '3.p' 1
+procs 3
+0 inicializartablero 0x00000 1 2 0 8 8 '3.p' 101
+t 14 0x0 - '3.p' 16
+i 2 0x0 - '3.p' 16
+j 2 0x4 - '3.p' 16
+1 imprimirtablero 0x0004c 1 13 0 36 84 '3.p' 102
+f 14 0x0 - '3.p' 28
+fichfichas 5 0x0 - '3.p' 84
+c 1 0x4 - '3.p' 77
+cord1 1 0x8 - '3.p' 75
+cord2 1 0xc - '3.p' 77
+p 2 0x10 - '3.p' 82
+i 2 0x14 - '3.p' 88
+j 2 0x18 - '3.p' 88
+k 2 0x1c - '3.p' 73
+l 2 0x20 - '3.p' 73
+t 14 0x24 - '3.p' 88
+$v0 1 0x48 - '3.p' 65
+$v1 1 0x4c - '3.p' 79
+$v2 1 0x50 - '3.p' 81
+2 main 0x001cf 0 2 0 0 40 '3.p' 96
+fichfichas 5 0x0 - '3.p' 97
+t 14 0x4 - '3.p' 102
+text 475
+# inicializartablero()
+# {...}
+# {...}
+# %i: int = 0
+00000	push	0x0000000000	# 0;
+00002	lvar	0x0000000000	# %i: int;
+00004	sto	0x0000000002
+# for(<(%i: int, MaxTab=3))
+00006	push	0x0000000003	# MaxTab=3;
+00008	lvar	0x0000000000	# %i: int;
+0000a	ind	0x0000000004
+0000c	lt	
+0000d	jmpf	0x000000004a
+# {...}
+# {...}
+# %j: int = 0
+0000f	push	0x0000000000	# 0;
+00011	lvar	0x0000000004	# %j: int;
+00013	sto	0x0000000002
+# for(<(%j: int, MaxTab=3))
+00015	push	0x0000000003	# MaxTab=3;
+00017	lvar	0x0000000004	# %j: int;
+00019	ind	0x0000000004
+0001b	lt	
+0001c	jmpf	0x000000003e
+# {...}
+# []([](&t: TipoTablero, %i: int), %j: int) = '#'
+0001e	push	0x0000000023	# '#';
+00020	lvar	0x0000000004	# []; %j: int;
+00022	ind	0x0000000004
+00024	lvar	0x0000000000	# []; %i: int;
+00026	ind	0x0000000004
+00028	arg	0x0000000000	# &t: TipoTablero;
+0002a	ind	0x0000000008
+0002c	idx	0x000000000e
+0002e	idx	0x000000000c
+00030	sto	0x0000000001
+# %j: int = succ(%j: int)
+00032	lvar	0x0000000004	# %j: int;
+00034	ind	0x0000000004
+00036	call	0x0080000031	# succ();
+00038	lvar	0x0000000004	# %j: int;
+0003a	sto	0x0000000002
+0003c	jmp	0x0000000015
+# %i: int = succ(%i: int)
+0003e	lvar	0x0000000000	# %i: int;
+00040	ind	0x0000000004
+00042	call	0x0080000031	# succ();
+00044	lvar	0x0000000000	# %i: int;
+00046	sto	0x0000000002
+00048	jmp	0x0000000006
+# return <nil>
+0004a	ret	0x0000000000
+# imprimirtablero()
+# {...}
+# open(%fichfichas: file, $s0="fichas.txt", $s1="r")
+0004c	daddr	0x0000000090	# $s1="r";
+0004e	ind	0x0000000004
+00050	daddr	0x0000000068	# $s0="fichas.txt";
+00052	ind	0x0000000028
+00054	lvar	0x0000000000	# %fichfichas: file;
+00056	push	0x0000000010
+00058	push	0x000000000f
+0005a	call	0x0080000015	# open();
+# %p: int = 0
+0005c	push	0x0000000000	# 0;
+0005e	lvar	0x0000000010	# %p: int;
+00060	sto	0x0000000002
+# dowhile(not(feof(%fichfichas: file)))
+# {...}
+# fpeek(%fichfichas: file, %c: char)
+00062	lvar	0x0000000004	# %c: char;
+00064	lvar	0x0000000000	# %fichfichas: file;
+00066	ind	0x0000000004
+00068	call	0x008000000a	# fpeek();
+# {...}
+# %$v2: char = %c: char
+0006a	lvar	0x0000000004	# %c: char;
+0006c	lvar	0x0000000050	# %$v2: char;
+0006e	stom	0x0000000001
+# if(==(%$v2: char, Eol=Eol))
+00070	push	0x000000000a	# Eol=Eol;
+00072	lvar	0x0000000050	# %$v2: char;
+00074	ind	0x0000000004
+00076	eq	
+00077	jmpf	0x0000000081
+# {...}
+# freadeol(%fichfichas: file)
+00079	lvar	0x0000000000	# %fichfichas: file;
+0007b	ind	0x0000000004
+0007d	call	0x008000000c	# freadeol();
+0007f	jmp	0x000000015f
+# if(==(%$v2: char, Eof=Eof))
+00081	push	0x00000000ff	# Eof=Eof;
+00083	lvar	0x0000000050	# %$v2: char;
+00085	ind	0x0000000004
+00087	eq	
+00088	jmpf	0x000000008c
+# {...}
+# nop
+0008a	jmp	0x000000015f
+# {...}
+# fread(%fichfichas: file, %c: char)
+0008c	lvar	0x0000000004	# %c: char;
+0008e	lvar	0x0000000000	# %fichfichas: file;
+00090	ind	0x0000000004
+00092	push	0x0000000001
+00094	call	0x008000000b	# fread();
+# if(==(%p: int, 0))
+00096	push	0x0000000000	# 0;
+00098	lvar	0x0000000010	# %p: int;
+0009a	ind	0x0000000004
+0009c	eq	
+0009d	jmpf	0x00000000a7
+# {...}
+# %cord1: char = %c: char
+0009f	lvar	0x0000000004	# %c: char;
+000a1	lvar	0x0000000008	# %cord1: char;
+000a3	stom	0x0000000001
+000a5	jmp	0x00000000b6
+# if(==(%p: int, 1))
+000a7	push	0x0000000001	# 1;
+000a9	lvar	0x0000000010	# %p: int;
+000ab	ind	0x0000000004
+000ad	eq	
+000ae	jmpf	0x00000000b6
+# {...}
+# %cord2: char = %c: char
+000b0	lvar	0x0000000004	# %c: char;
+000b2	lvar	0x000000000c	# %cord2: char;
+000b4	stom	0x0000000001
+# if(==(%p: int, 2))
+000b6	push	0x0000000002	# 2;
+000b8	lvar	0x0000000010	# %p: int;
+000ba	ind	0x0000000004
+000bc	eq	
+000bd	jmpf	0x000000015f
+# {...}
+# {...}
+# %$v0: char = %cord1: char
+000bf	lvar	0x0000000008	# %cord1: char;
+000c1	lvar	0x0000000048	# %$v0: char;
+000c3	stom	0x0000000001
+# if(==(%$v0: char, 'A'))
+000c5	push	0x0000000041	# 'A';
+000c7	lvar	0x0000000048	# %$v0: char;
+000c9	ind	0x0000000004
+000cb	eq	
+000cc	jmpf	0x00000000d6
+# {...}
+# %k: int = 0
+000ce	push	0x0000000000	# 0;
+000d0	lvar	0x000000001c	# %k: int;
+000d2	sto	0x0000000002
+000d4	jmp	0x00000000f6
+# if(==(%$v0: char, 'B'))
+000d6	push	0x0000000042	# 'B';
+000d8	lvar	0x0000000048	# %$v0: char;
+000da	ind	0x0000000004
+000dc	eq	
+000dd	jmpf	0x00000000e7
+# {...}
+# %k: int = 1
+000df	push	0x0000000001	# 1;
+000e1	lvar	0x000000001c	# %k: int;
+000e3	sto	0x0000000002
+000e5	jmp	0x00000000f6
+# if(==(%$v0: char, 'C'))
+000e7	push	0x0000000043	# 'C';
+000e9	lvar	0x0000000048	# %$v0: char;
+000eb	ind	0x0000000004
+000ed	eq	
+000ee	jmpf	0x00000000f6
+# {...}
+# %k: int = 2
+000f0	push	0x0000000002	# 2;
+000f2	lvar	0x000000001c	# %k: int;
+000f4	sto	0x0000000002
+# {...}
+# %$v1: char = %cord2: char
+000f6	lvar	0x000000000c	# %cord2: char;
+000f8	lvar	0x000000004c	# %$v1: char;
+000fa	stom	0x0000000001
+# if(==(%$v1: char, 'A'))
+000fc	push	0x0000000041	# 'A';
+000fe	lvar	0x000000004c	# %$v1: char;
+00100	ind	0x0000000004
+00102	eq	
+00103	jmpf	0x000000010d
+# {...}
+# %l: int = 0
+00105	push	0x0000000000	# 0;
+00107	lvar	0x0000000020	# %l: int;
+00109	sto	0x0000000002
+0010b	jmp	0x000000015f
+# if(==(%$v1: char, 'B'))
+0010d	push	0x0000000042	# 'B';
+0010f	lvar	0x000000004c	# %$v1: char;
+00111	ind	0x0000000004
+00113	eq	
+00114	jmpf	0x000000011e
+# {...}
+# %l: int = 1
+00116	push	0x0000000001	# 1;
+00118	lvar	0x0000000020	# %l: int;
+0011a	sto	0x0000000002
+0011c	jmp	0x000000015f
+# if(==(%$v1: char, 'C'))
+0011e	push	0x0000000043	# 'C';
+00120	lvar	0x000000004c	# %$v1: char;
+00122	ind	0x0000000004
+00124	eq	
+00125	jmpf	0x000000015f
+# {...}
+# %l: int = 2
+00127	push	0x0000000002	# 2;
+00129	lvar	0x0000000020	# %l: int;
+0012b	sto	0x0000000002
+# []([](%t: TipoTablero, %k: int), %l: int) = %c: char
+0012d	lvar	0x0000000004	# %c: char;
+0012f	lvar	0x0000000020	# []; %l: int;
+00131	ind	0x0000000004
+00133	lvar	0x000000001c	# []; %k: int;
+00135	ind	0x0000000004
+00137	lvar	0x0000000024	# %t: TipoTablero;
+00139	idx	0x000000000e
+0013b	idx	0x000000000c
+0013d	stom	0x0000000001
+# if(==(%p: int, 3))
+0013f	push	0x0000000003	# 3;
+00141	lvar	0x0000000010	# %p: int;
+00143	ind	0x0000000004
+00145	eq	
+00146	jmpf	0x0000000150
+# {...}
+# %cord1: char = %c: char
+00148	lvar	0x0000000004	# %c: char;
+0014a	lvar	0x0000000008	# %cord1: char;
+0014c	stom	0x0000000001
+0014e	jmp	0x000000015f
+# if(==(%p: int, 3))
+00150	push	0x0000000003	# 3;
+00152	lvar	0x0000000010	# %p: int;
+00154	ind	0x0000000004
+00156	eq	
+00157	jmpf	0x000000015f
+# {...}
+# %cord2: char = %c: char
+00159	lvar	0x0000000004	# %c: char;
+0015b	lvar	0x000000000c	# %cord2: char;
+0015d	stom	0x0000000001
+# %p: int = +(%p: int, 1)
+0015f	push	0x0000000001	# 1;
+00161	lvar	0x0000000010	# %p: int;
+00163	ind	0x0000000004
+00165	add	
+00166	lvar	0x0000000010	# %p: int;
+00168	sto	0x0000000002
+0016a	lvar	0x0000000000	# %fichfichas: file;
+0016c	ind	0x0000000004
+0016e	call	0x0080000008	# feof();
+00170	not	
+00171	jmpt	0x0000000062
+# close(%fichfichas: file)
+00173	lvar	0x0000000000	# %fichfichas: file;
+00175	ind	0x0000000004
+00177	call	0x0080000003	# close();
+# {...}
+# %i: int = 0
+00179	push	0x0000000000	# 0;
+0017b	lvar	0x0000000014	# %i: int;
+0017d	sto	0x0000000002
+# for(<(%i: int, MaxTab=3))
+0017f	push	0x0000000003	# MaxTab=3;
+00181	lvar	0x0000000014	# %i: int;
+00183	ind	0x0000000004
+00185	lt	
+00186	jmpf	0x00000001cd
+# {...}
+# {...}
+# %j: int = 0
+00188	push	0x0000000000	# 0;
+0018a	lvar	0x0000000018	# %j: int;
+0018c	sto	0x0000000002
+# for(<(%j: int, MaxTab=3))
+0018e	push	0x0000000003	# MaxTab=3;
+00190	lvar	0x0000000018	# %j: int;
+00192	ind	0x0000000004
+00194	lt	
+00195	jmpf	0x00000001bb
+# {...}
+# fwrite(stdout: file, []([](%t: TipoTablero, %i: int), %j: int))
+00197	lvar	0x0000000018	# []; %j: int;
+00199	ind	0x0000000004
+0019b	lvar	0x0000000014	# []; %i: int;
+0019d	ind	0x0000000004
+0019f	lvar	0x0000000024	# %t: TipoTablero;
+001a1	idx	0x000000000e
+001a3	idx	0x000000000c
+001a5	ind	0x0000000004
+001a7	daddr	0x0000000098	# stdout: file;
+001a9	ind	0x0000000004
+001ab	push	0x0000000001
+001ad	call	0x008000000f	# fwrite();
+# %j: int = succ(%j: int)
+001af	lvar	0x0000000018	# %j: int;
+001b1	ind	0x0000000004
+001b3	call	0x0080000031	# succ();
+001b5	lvar	0x0000000018	# %j: int;
+001b7	sto	0x0000000002
+001b9	jmp	0x000000018e
+# fwriteeol(stdout: file)
+001bb	daddr	0x0000000098	# stdout: file;
+001bd	ind	0x0000000004
+001bf	call	0x0080000011	# fwriteeol();
+# %i: int = succ(%i: int)
+001c1	lvar	0x0000000014	# %i: int;
+001c3	ind	0x0000000004
+001c5	call	0x0080000031	# succ();
+001c7	lvar	0x0000000014	# %i: int;
+001c9	sto	0x0000000002
+001cb	jmp	0x000000017f
+# return <nil>
+001cd	ret	0x0000000001
+# main()
+# {...}
+# inicializartablero(%t: TipoTablero)
+001cf	lvar	0x0000000004	# %t: TipoTablero;
+001d1	call	0x0000000000	# inicializartablero();
+# imprimirtablero(%t: TipoTablero)
+001d3	lvar	0x0000000004	# %t: TipoTablero;
+001d5	ind	0x0000000024
+001d7	call	0x0000000001	# imprimirtablero();
+# return <nil>
+001d9	ret	0x0000000002
+pcs 50
+00000	'3.p'	16
+00000	'3.p'	18
+0000f	'3.p'	16
+0000f	'3.p'	17
+0001e	'3.p'	16
+00032	'3.p'	17
+0003e	'3.p'	18
+0004a	'3.p'	121
+0004c	'3.p'	40
+0005c	'3.p'	41
+00062	'3.p'	43
+0006a	'3.p'	77
+0006a	'3.p'	81
+00070	'3.p'	46
+00081	'3.p'	48
+0008c	'3.p'	50
+00096	'3.p'	52
+0009f	'3.p'	53
+000a7	'3.p'	54
+000b0	'3.p'	55
+000b6	'3.p'	57
+000bf	'3.p'	58
+000bf	'3.p'	65
+000c5	'3.p'	60
+000d6	'3.p'	62
+000e7	'3.p'	64
+000f6	'3.p'	77
+000f6	'3.p'	79
+000fc	'3.p'	68
+0010d	'3.p'	70
+0011e	'3.p'	72
+0012d	'3.p'	73
+0013f	'3.p'	74
+00148	'3.p'	75
+00150	'3.p'	76
+00159	'3.p'	77
+0015f	'3.p'	82
+00173	'3.p'	84
+00179	'3.p'	88
+00179	'3.p'	91
+00188	'3.p'	88
+00188	'3.p'	89
+00197	'3.p'	88
+001af	'3.p'	89
+001bb	'3.p'	90
+001c1	'3.p'	91
+001cd	'3.p'	121
+001cf	'3.p'	101
+001d3	'3.p'	102
+001d9	'3.p'	121
